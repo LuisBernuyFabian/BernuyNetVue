@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Personas";
+}
+<style>
+    [v-cloak] { /* Se utiliza para ocultar fijaciones bigote compilados hasta que la instancia Vue.js está listo.*/
+        display: none;
+    } /*Añadir esto center picture Hoja defs Estilos CSS. Acá blockquote puse solo como demostración.*/
+</style>
+<hr />
+<div class="container" id="app">
+    <div class="col-xs-12">
+        <button v-on:click="traerAxios" class="btn btn-primary">Traer con AXIOS</button>
+        <button v-on:click="limpiarLista" class="btn btn-danger pull-right">Limpiar</button>
+    </div><hr />
+
+    <div class="col-xs-12">
+        <button type="button" v-on:click="traerJquery" class="btn btn-primary">Traer con JQUERY</button>
+        <button v-on:click="limpiarLista" class="btn btn-danger pull-right">Limpiar</button>
+    </div><hr />    
+
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Dni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-cloak v-for="persona in listaPersonas"> @*Sirve para ocultar el los bigotes hasta que se cargue Vue por completo, esto no es necesario si utilizas Vue 2 con Node.js NPM y WebPack*@
+                    <td>{{ persona.Id }}</td>
+                    <td>{{ persona.Nombre }}</td>
+                    <td>{{ persona.Dni }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/axios.min.js"></script>
+    <script src="~/Scripts/JsVue/Personas.js"></script>
+}
